@@ -18,9 +18,22 @@ namespace DojoValidations.Controllers
             _logger = logger;
         }
 
+        [HttpGet("")]
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Result(Survey survey)
+        {
+            if(ModelState.IsValid)
+            {
+                return View("Results", survey);
+            }
+            else
+            {
+                return View("Index", survey);
+            }
         }
 
         public IActionResult Privacy()
